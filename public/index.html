@@ -4,7 +4,6 @@
 	<title>Processo seletivo</title>
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	
 	<script>
 		$(document).ready(function(){
 			var nome, sobrenome, email;
@@ -14,20 +13,27 @@
 				email = $("#email").val();
 				$.post("http://162.243.24.210:8082/",{nome: nome, sobrenome: sobrenome, email: email},
 					function(data){
-						var nome = "";
-						var sobrenome = "";
-						var email = "";
+						var nomeCod = "";
+						var sobrenomeCod = "";
+						var emailCod = "";
 						var resultado = data.split("#");
-						nome = resultado[1];
-						sobrenome = resultado[3];
-						email = resultado[5];
-						console.log(nome +"/"+ sobrenome+"/"+ email)
+						nomeCod = resultado[1];
+						sobrenomeCod = resultado[3];
+						emailCod = resultado[5];
+						console.log(nomeCod +"/"+ sobrenomeCod+"/"+ emailCod)
+						console.log(data)
+						$.post("/",{nome: nome, nomeCod: nomeCod, sobrenome: sobrenome, sobrenomeCod: sobrenomeCod, email: email, emailCod: emailCod},
+							function(data){
+								console.log(nome, nomeCod);
+							});
+						
 					});
 
 			});
 
 		});
 	</script>
+
 </head>
 <body>
 		<div id="comeco">
@@ -39,6 +45,7 @@
 		        <label for="email">E-mail:</label><br/>
 	        	<input type="email" id="email"><br/>
         	</form><br/>
+        		<a href="result.html"><input type="button" id="result" value="Resultado"></a>
         		<input type="button" id="enviar" value="Enviar">
     	</div>
 

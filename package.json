@@ -15,6 +15,7 @@
     "express": "^4.16.3",
     "jquery": "^3.3.1",
     "mssql": "^4.1.0",
-    "tedious": "^2.6.4"
+    "tedious": "^2.6.4",
+    "tedious-promises": "^0.4.1"
   }
 }
